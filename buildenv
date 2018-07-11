@@ -1,0 +1,5 @@
+export CC="$TARGET_ROOT/bin/musl-gcc"
+export LD="$CC"
+export CXX="false"
+export CFLAGS="-O2 -pipe -no-pie"
+export LDFLAGS="$CFLAGS"
