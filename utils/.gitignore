@@ -1,0 +1,4 @@
+# Ignore built executables
+init
+halt
+
