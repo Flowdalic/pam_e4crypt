@@ -444,7 +444,11 @@ pam_sm_authenticate(
         return PAM_AUTH_ERR;
     }
     key_list_init(keys);
-    pam_set_data(pamh, PAM_E4CRYPT_KEY_DATA, keys, key_list_pam_cleanup);
+    retval = pam_set_data(pamh, PAM_E4CRYPT_KEY_DATA, keys, key_list_pam_cleanup);
+    if (retval != PAM_SUCCESS) {
+        pam_log(LOG_ERR, "Failed to set key list: %u", retval);
+        return PAM_SUCCESS;
+    }
 
     // First read a salt define in a fixed place in the HOME directory
     const char *username;
