@@ -545,7 +545,7 @@ pam_sm_open_session(
     struct key_list* keys = NULL;
     retval = pam_get_data(pamh, PAM_E4CRYPT_KEY_DATA, (const void**) &keys);
     if ((retval != PAM_SUCCESS) || !keys) {
-        pam_log(LOG_ERR, "Failed to retrieve key list!");
+        pam_log(LOG_ERR, "Failed to retrieve key list! retval: %u, keys: %p", retval, keys);
         return PAM_SESSION_ERR;
     }
 
